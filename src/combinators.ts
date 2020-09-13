@@ -41,6 +41,17 @@ export const choose = <I, O>(
               return result
           }
 
+export const catchErrors = <A, B, E>(
+    task: Task<A, B>,
+    handler: Task<E, B>
+): Task<A, B> => async input => {
+    try {
+        return await task(input)
+    } catch (error: unknown) {
+        return handler(error as E)
+    }
+}
+
 export const pack = <A, B>(
     task: Task<A, Task<A, B>>
 ): Task<A, B> => async argument => {
