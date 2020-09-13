@@ -1,33 +1,8 @@
 import type { Task, Fn } from "./types"
 import { fail } from "./utils"
 
-export const never = <T>(_: T): Promise<null> => fail()
-
 export const always = <T, U>(v: U): Task<T, U> => _ =>
     Promise.resolve(v)
-
-export const filter = <T>(
-    fn: Fn<T, boolean>
-): Task<T, T> => async input => {
-    if (fn(input)) return input
-
-    return null
-}
-
-export const reduce = async <A, B>(
-    fn: Task<A, B>,
-    promise: Promise<A | null>
-): Promise<B | null> => {
-    const result = await promise
-    if (!result) return null
-
-    return fn(result)
-}
-
-export const compose = <A, B, C>(
-    first: Task<A, B>,
-    second: Task<B, C>
-): Task<A, C> => input => reduce(second, first(input))
 
 export const choose = <I, O>(
     ...tasks: Array<Task<I, O>>
@@ -44,14 +19,10 @@ export const choose = <I, O>(
               return result
           }
 
-export const tryThen: <A, B>(
+export const compose = <A, B, C>(
     first: Task<A, B>,
-    second: Task<A, B>
-) => Task<A, B> = choose
-
-export const warbler = <A, B>(
-    task: Fn<A, Task<A, B>>
-): Task<A, B> => argument => task(argument)(argument)
+    second: Task<B, C>
+): Task<A, C> => input => reduce(second, first(input))
 
 export const catchErrors = <A, B, E>(
     task: Task<A, B>,
@@ -64,6 +35,16 @@ export const catchErrors = <A, B, E>(
     }
 }
 
+export const filter = <T>(
+    fn: Fn<T, boolean>
+): Task<T, T> => async input => {
+    if (fn(input)) return input
+
+    return null
+}
+
+export const never = <T>(_: T): Promise<null> => fail()
+
 export const pack = <A, B>(
     task: Task<A, Task<A, B>>
 ): Task<A, B> => async argument => {
@@ -73,3 +54,22 @@ export const pack = <A, B>(
 
     return result(argument)
 }
+
+export const reduce = async <A, B>(
+    fn: Task<A, B>,
+    promise: Promise<A | null>
+): Promise<B | null> => {
+    const result = await promise
+    if (!result) return null
+
+    return fn(result)
+}
+
+export const tryThen: <A, B>(
+    first: Task<A, B>,
+    second: Task<A, B>
+) => Task<A, B> = choose
+
+export const warbler = <A, B>(
+    task: Fn<A, Task<A, B>>
+): Task<A, B> => argument => task(argument)(argument)
