@@ -28,6 +28,9 @@
     },
     "scripts": {
         "build": "rollup -c ./rollup.config.ts",
+        "dev-check": "yarn lint-check && yarn format-check",
+        "format-check": "prettier --check \"**/*.+(js|json|ts)\"",
+        "lint-check": "eslint \"**/*.+(js|ts)\"",
         "ci:build": "rollup -c ./rollup.config.ts"
     },
     "devDependencies": {
