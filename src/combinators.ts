@@ -20,3 +20,23 @@ export const reduce = async <A, B>(
 
     return fn(result)
 }
+
+export const compose = <A, B, C>(
+    first: Task<A, B>,
+    second: Task<B, C>
+): Task<A, C> => input => reduce(second, first(input))
+
+export const choose = <I, O>(
+    ...tasks: Array<Task<I, O>>
+): Task<I, O> =>
+    tasks.length === 0
+        ? never
+        : async input => {
+              const [head, ...tail] = tasks
+
+              const result = await head(input)
+
+              if (!result) return choose(...tail)(input)
+
+              return result
+          }
