@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "newLine": "lf",
+        "outDir": "dist",
+        "lib": ["ESNext"],
+        "target": "ES2020",
+        "module": "CommonJS",
+        "noUnusedLocals": true,
+        "esModuleInterop": true,
+        "strictNullChecks": true,
+        "noImplicitReturns": true,
+        "noUnusedParameters": true,
+        "moduleResolution": "Node",
+        "downlevelIteration": true,
+        "noFallthroughCasesInSwitch": true,
+        "allowSyntheticDefaultImports": true
+    },
+    "include": ["src"]
+}
