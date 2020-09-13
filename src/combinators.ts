@@ -41,6 +41,11 @@ export const choose = <I, O>(
               return result
           }
 
+export const tryThen: <A, B>(
+    first: Task<A, B>,
+    second: Task<A, B>
+) => Task<A, B> = choose
+
 export const catchErrors = <A, B, E>(
     task: Task<A, B>,
     handler: Task<E, B>
