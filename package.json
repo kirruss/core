@@ -28,6 +28,7 @@
     },
     "scripts": {
         "build": "rollup -c ./rollup.config.ts",
+        "dev": "tsnd --respawn --notify=false -T sandbox/index.ts",
         "dev-check": "yarn lint-check && yarn format-check",
         "format-check": "prettier --check \"**/*.+(js|json|ts)\"",
         "lint-check": "eslint \"**/*.+(js|ts)\"",
