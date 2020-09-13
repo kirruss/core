@@ -33,7 +33,8 @@
         "lint-check": "eslint \"**/*.+(js|ts)\"",
         "test": "jest --config jest.config.json",
         "ci:build": "rollup -c ./rollup.config.ts",
-        "ci:lint": "eslint \"**/*.+(js|ts)\" && prettier --check \"**/*.+(js|json|ts)\""
+        "ci:lint": "eslint \"**/*.+(js|ts)\" && prettier --check \"**/*.+(js|json|ts)\"",
+        "ci:test": "jest --config jest.ci.config.json"
     },
     "devDependencies": {
         "@semantic-release/changelog": "^5.0.1",
