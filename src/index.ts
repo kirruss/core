@@ -1,2 +1,2 @@
-export { Task } from "./types"
+export { Task, EndoTask } from "./types"
 export * from "./combinators"

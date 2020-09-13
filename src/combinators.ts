@@ -1,4 +1,4 @@
-import type { Task, Fn } from "./types"
+import type { EndoTask, Fn, Task } from "./types"
 import { fail } from "./utils"
 
 export const always = <T, U>(v: U): Task<T, U> => _ =>
@@ -37,7 +37,7 @@ export const catchErrors = <A, B, E>(
 
 export const effectful = <A>(
     effect: Fn<A, Promise<void> | void>
-): Task<A, A> => async argument => {
+): EndoTask<A> => async argument => {
     await effect(argument)
 
     return argument
@@ -45,7 +45,7 @@ export const effectful = <A>(
 
 export const filter = <T>(
     fn: Fn<T, boolean>
-): Task<T, T> => async input => {
+): EndoTask<T> => async input => {
     if (fn(input)) return input
 
     return null
@@ -79,8 +79,8 @@ export const tryThen: <A, B>(
 ) => Task<A, B> = choose
 
 export const tryTo = <A>(
-    task: Task<A, A>
-): Task<A, A> => async argument => {
+    task: EndoTask<A>
+): EndoTask<A> => async argument => {
     const result = await task(argument)
 
     if (!result) return argument
