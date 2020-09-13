@@ -35,6 +35,14 @@ export const catchErrors = <A, B, E>(
     }
 }
 
+export const effectful = <A>(
+    effect: Fn<A, Promise<void> | void>
+): Task<A, A> => async argument => {
+    await effect(argument)
+
+    return argument
+}
+
 export const filter = <T>(
     fn: Fn<T, boolean>
 ): Task<T, T> => async input => {
