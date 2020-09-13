@@ -1,0 +1,82 @@
+{
+    "root": true,
+    "env": {
+        "es2020": true,
+        "node": true,
+        "jest/globals": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "prettier/@typescript-eslint",
+        "plugin:prettier/recommended",
+        "plugin:sonarjs/recommended",
+        "plugin:unicorn/recommended",
+        "standard",
+        "plugin:promise/recommended",
+        "plugin:node/recommended",
+        "plugin:import/warnings",
+        "plugin:import/errors",
+        "plugin:import/typescript",
+        "prettier",
+        "plugin:jest/recommended",
+        "plugin:jest/style"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "sourceType": "module",
+        "project": [
+            "./tsconfig.json",
+            "./tsconfig.eslint.json"
+        ]
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "import",
+        "promise",
+        "node",
+        "standard",
+        "sonarjs",
+        "unicorn",
+        "prettier",
+        "jest"
+    ],
+    "rules": {
+        "no-unused-vars": 0,
+        "require-atomic-updates": 0,
+        "spaced-comment": ["error", "always"],
+        "@typescript-eslint/explicit-function-return-type": 2,
+        "import/no-commonjs": 2,
+        "import/no-amd": 2,
+        "import/no-cycle": 0,
+        "import/no-unresolved": 1,
+        "import/namespace": [
+            "error",
+            {
+                "allowComputed": true
+            }
+        ],
+        "node/no-missing-import": 0,
+        "node/no-unpublished-import": 0,
+        "node/no-unsupported-features/es-syntax": 0,
+        "prettier/prettier": 2,
+        "promise/always-return": 1,
+        "promise/prefer-await-to-then": 2,
+        "promise/prefer-await-to-callbacks": 2,
+        "unicorn/filename-case": [
+            "error",
+            {
+                "cases": {
+                    "camelCase": true,
+                    "pascalCase": true
+                }
+            }
+        ],
+        "unicorn/no-useless-undefined": 0,
+        "unicorn/no-reduce": 0
+    }
+}
