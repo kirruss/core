@@ -7,3 +7,13 @@ export const filter = <T>(
 
     return null
 }
+
+export const reduce = async <A, B>(
+    fn: Task<A, B>,
+    promise: Promise<A | null>
+): Promise<B | null> => {
+    const result = await promise
+    if (!result) return null
+
+    return fn(result)
+}
