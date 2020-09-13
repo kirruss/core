@@ -78,6 +78,15 @@ export const tryThen: <A, B>(
     second: Task<A, B>
 ) => Task<A, B> = choose
 
+export const tryTo = <A>(
+    task: Task<A, A>
+): Task<A, A> => async argument => {
+    const result = await task(argument)
+
+    if (!result) return argument
+    return result
+}
+
 export const warbler = <A, B>(
     task: Fn<A, Task<A, B>>
 ): Task<A, B> => argument => task(argument)(argument)
