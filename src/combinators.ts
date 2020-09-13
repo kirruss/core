@@ -46,6 +46,10 @@ export const tryThen: <A, B>(
     second: Task<A, B>
 ) => Task<A, B> = choose
 
+export const warbler = <A, B>(
+    task: Fn<A, Task<A, B>>
+): Task<A, B> => argument => task(argument)(argument)
+
 export const catchErrors = <A, B, E>(
     task: Task<A, B>,
     handler: Task<E, B>
