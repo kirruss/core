@@ -40,3 +40,13 @@ export const choose = <I, O>(
 
               return result
           }
+
+export const pack = <A, B>(
+    task: Task<A, Task<A, B>>
+): Task<A, B> => async argument => {
+    const result = await task(argument)
+
+    if (!result) return null
+
+    return result(argument)
+}
