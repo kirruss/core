@@ -1,0 +1,30 @@
+{
+    "name": "@kirrus/core",
+    "version": "1.0.0",
+    "description": "The core module of the kirrus framework",
+    "keywords": [
+        "kirrus",
+        "framework",
+        "http",
+        "web",
+        "server",
+        "rest",
+        "restful",
+        "app",
+        "api"
+    ],
+    "repository": "https://github.com/kirruss/core",
+    "author": "BlueGhostGH <engisoftleaderoff@gmail.com>",
+    "license": "Unlicense",
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "typings": "dist/esm/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "sideEffects": false,
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {}
+}
