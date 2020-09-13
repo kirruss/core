@@ -3,6 +3,9 @@ import { fail } from "./utils"
 
 export const never = <T>(_: T): Promise<null> => fail()
 
+export const always = <T, U>(v: U): Task<T, U> => _ =>
+    Promise.resolve(v)
+
 export const filter = <T>(
     fn: Fn<T, boolean>
 ): Task<T, T> => async input => {
