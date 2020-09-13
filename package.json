@@ -28,6 +28,7 @@
     },
     "scripts": {},
     "devDependencies": {
+        "@types/jest": "^26.0.13",
         "@typescript-eslint/eslint-plugin": "^4.1.0",
         "@typescript-eslint/parser": "^4.1.0",
         "eslint": "^7.9.0",
@@ -41,7 +42,9 @@
         "eslint-plugin-sonarjs": "^0.5.0",
         "eslint-plugin-standard": "^4.0.1",
         "eslint-plugin-unicorn": "^21.0.0",
+        "jest": "^26.4.2",
         "prettier": "^2.1.1",
+        "ts-jest": "^26.3.0",
         "typescript": "^4.0.2"
     }
 }
