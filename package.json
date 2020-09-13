@@ -26,5 +26,8 @@
     "publishConfig": {
         "access": "public"
     },
-    "scripts": {}
+    "scripts": {},
+    "devDependencies": {
+        "typescript": "^4.0.2"
+    }
 }
