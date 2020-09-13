@@ -1,1 +1,1 @@
-export * from "./add"
+export { Task } from "./types"
