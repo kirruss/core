@@ -1,0 +1,9 @@
+{
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": ["html", "text", "text-summary"],
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "transform": {},
+    "verbose": true
+}

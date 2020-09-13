@@ -1,0 +1,9 @@
+{
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": ["lcov"],
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "transform": {},
+    "verbose": true
+}
