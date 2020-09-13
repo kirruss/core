@@ -1,4 +1,7 @@
 import type { Task, Fn } from "./types"
+import { fail } from "./utils"
+
+export const never = <T>(_: T): Promise<null> => fail()
 
 export const filter = <T>(
     fn: Fn<T, boolean>
