@@ -35,7 +35,8 @@
         "test-cov": "jest --config jest.cov.config.json",
         "ci:build": "rollup -c ./rollup.config.ts",
         "ci:lint": "eslint \"**/*.+(js|ts)\" && prettier --check \"**/*.+(js|json|ts)\"",
-        "ci:test": "jest --config jest.ci.config.json"
+        "ci:test": "jest --config jest.ci.config.json",
+        "ci:type-check": "tsc -p tsconfig.json --noEmit"
     },
     "devDependencies": {
         "@semantic-release/changelog": "^5.0.1",
