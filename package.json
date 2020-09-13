@@ -31,7 +31,8 @@
         "dev-check": "yarn lint-check && yarn format-check",
         "format-check": "prettier --check \"**/*.+(js|json|ts)\"",
         "lint-check": "eslint \"**/*.+(js|ts)\"",
-        "ci:build": "rollup -c ./rollup.config.ts"
+        "ci:build": "rollup -c ./rollup.config.ts",
+        "ci:lint": "eslint \"**/*.+(js|ts)\" && prettier --check \"**/*.+(js|json|ts)\""
     },
     "devDependencies": {
         "@semantic-release/changelog": "^5.0.1",
