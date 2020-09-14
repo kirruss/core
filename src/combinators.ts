@@ -16,6 +16,22 @@ import { fail } from "./utils"
 export const always = <T, U>(v: U): Task<T, U> => _ =>
     Promise.resolve(v)
 
+/**
+ * A combinator that takes a list of tasks and returns a
+ * task that iterates over the list until a task is found
+ * that doesn't fail with the provided input.
+ *
+ * @example
+ * const fail = choose<string, string>()
+ * const task = choose(never, always("bar"))
+ *
+ * await fail("foo") // => null
+ * await task("foo") // => "bar"
+ *
+ * @param tasks A list of tasks
+ * @returns A task that returns the result of the first
+ * successful task application
+ */
 export const choose = <I, O>(
     ...tasks: Array<Task<I, O>>
 ): Task<I, O> =>
