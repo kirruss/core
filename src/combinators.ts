@@ -117,6 +117,19 @@ export const pack = <A, B>(
     return result(argument)
 }
 
+/**
+ * A combinator that takes a task and a promise and returns
+ * the result of applying that task on that promise.
+ *
+ * @example
+ * const task = reduce(always("foo"), Promise.resolve("bar"))
+ *
+ * await task // => "foo"
+ *
+ * @param fn A task
+ * @param promise A promise
+ * @returns The result of applying the task on the promise
+ */
 export const reduce = async <A, B>(
     fn: Task<A, B>,
     promise: Promise<A | null>
