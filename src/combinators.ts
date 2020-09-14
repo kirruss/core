@@ -47,6 +47,23 @@ export const choose = <I, O>(
               return result
           }
 
+/**
+ * A combinator that effectively glues together two tasks,
+ *  applying the first task on the input and then applying
+ * the second task on the result.
+ *
+ * @example
+ * const firstTask = async (input: number) => String(input)
+ * const secondTask = async (input: string) => input.length > 3
+ * const composedTask = compose(firstTask, secondTask)
+ *
+ * await composedTask(42) // => false
+ * await composedTask(8765) // => true
+ *
+ * @param first First task to get run
+ * @param second Second task to get run
+ * @returns A task that represents the gluing together of the two tasks
+ */
 export const compose = <A, B, C>(
     first: Task<A, B>,
     second: Task<B, C>
