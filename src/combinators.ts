@@ -150,6 +150,23 @@ export const filter = <T>(
  */
 export const never = <T>(_: T): Promise<null> => fail()
 
+/**
+ * A combinator that takes a task that outputs another
+ * inner task that will be called with the argument passed
+ * onto the current task. The result of the call will be
+ * returned.
+ *
+ * @example
+ * const task = pack(async input => {
+ *     return input ? always("foo") : never
+ * })
+ *
+ * await task(true) // => "foo"
+ * await task(false) // => null
+ *
+ * @param task A task that outputs another task
+ * @returns A task that returns the result of applying the inner task
+ */
 export const pack = <A, B>(
     task: Task<A, Task<A, B>>
 ): Task<A, B> => async argument => {
@@ -215,6 +232,20 @@ export const tryTo = <A>(
     return result
 }
 
+/**
+ * A pack combinator in a synchronous form.
+ *
+ * @example
+ * const task = warbler(input => {
+ *     return input ? always("foo") : never
+ * })
+ *
+ * await task(true) // => "foo"
+ * await task(false) // => null
+ *
+ * @param task A function that outputs a task
+ * @returns A task that returns the result of applying the inner task
+ */
 export const warbler = <A, B>(
     task: Fn<A, Task<A, B>>
 ): Task<A, B> => argument => task(argument)(argument)
