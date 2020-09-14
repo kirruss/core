@@ -1,6 +1,18 @@
 import type { EndoTask, Fn, Task } from "./types"
 import { fail } from "./utils"
 
+/**
+ * A combinator that takes a constant value `v` and returns
+ * a task that unconditionally outputs `v`.
+ *
+ * @example
+ * const task = always("foo")
+ *
+ * await task("bar") // => "foo"
+ *
+ * @param v A constant value
+ * @returns A task that always outputs `v`
+ */
 export const always = <T, U>(v: U): Task<T, U> => _ =>
     Promise.resolve(v)
 
