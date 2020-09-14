@@ -51,6 +51,18 @@ export const filter = <T>(
     return null
 }
 
+/**
+ * A combinator that takes a constant value and returns
+ * a task that unconditionally outputs `null` (fails).
+ *
+ * @example
+ * const task = never("foo")
+ *
+ * await task // => null
+ *
+ * @param _ A constant value
+ * @returns A task that always fails
+ */
 export const never = <T>(_: T): Promise<null> => fail()
 
 export const pack = <A, B>(
