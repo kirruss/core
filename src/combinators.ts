@@ -106,6 +106,25 @@ export const catchErrors = <A, B, E>(
     }
 }
 
+/**
+ * A combinator that takes an effect that mutates the
+ * current task's argument and returns the mutated argument.
+ *
+ * @example
+ * type FooObject = { foo: number }
+ *
+ * const foo = { foo: 0 }
+ * const task = effectful((input: FooObject) => {
+ *     input.foo++
+ * })
+ *
+ * foo // => { foo: 0 }
+ * await task(foo)
+ * foo // => { foo: 1 }
+ *
+ * @param effect A function that has side effects
+ * @returns A task that returns the mutated result
+ */
 export const effectful = <A>(
     effect: Fn<A, Promise<void> | void>
 ): EndoTask<A> => async argument => {
