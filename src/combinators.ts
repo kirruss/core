@@ -69,6 +69,32 @@ export const compose = <A, B, C>(
     second: Task<B, C>
 ): Task<A, C> => input => reduce(second, first(input))
 
+/**
+ * A combinator that takes a task and an error handler and
+ * tries running the task, deferring to the handler in case
+ * of panic.
+ *
+ * @example
+ * type ArrayOfFoo = {
+ *     foo: number
+ * }[]
+ *
+ * const arrayOne = [{ foo: 0 }, { foo: 1 }, { foo: 2 }]
+ * const arrayTwo = [{ foo: 0 }, { foo: 1 }]
+ * const task = async (input: ArrayOfFoo) =>
+ *     console.log(input[2].foo)
+ * const handler = async (_: unknown) =>
+ *     console.error("Panic!")
+ *
+ * const catcher = catchErrors(task, handler)
+ *
+ * await catcher(arrayOne) // => 2
+ * await catcher(arrayTwo) // => "Panic!"
+ *
+ * @param task A task
+ * @param handler An error handler
+ * @returns A task that defers to the handler on panic
+ */
 export const catchErrors = <A, B, E>(
     task: Task<A, B>,
     handler: Task<E, B>
