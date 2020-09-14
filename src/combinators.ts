@@ -148,6 +148,21 @@ export const tryThen: <A, B>(
     second: Task<A, B>
 ) => Task<A, B> = choose
 
+/**
+ * A combinator that takes a task and returns another one
+ * that tries to apply the initial task on the input,
+ * returning the input unchanged on failure.
+ *
+ * @example
+ * const fail = tryTo(never)
+ * const task = tryTo(always("foo"))
+ *
+ * await fail("bar") // => "bar"
+ * await task("bar") // => "foo"
+ *
+ * @param task A task
+ * @returns A task that either returns the result of calling the task with the argument or the initial argument
+ */
 export const tryTo = <A>(
     task: EndoTask<A>
 ): EndoTask<A> => async argument => {
