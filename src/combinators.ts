@@ -140,6 +140,9 @@ export const reduce = async <A, B>(
     return fn(result)
 }
 
+/**
+ * A choose combinator that is specifically typed for exactly two tasks.
+ */
 export const tryThen: <A, B>(
     first: Task<A, B>,
     second: Task<A, B>
