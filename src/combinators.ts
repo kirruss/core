@@ -55,6 +55,20 @@ export const effectful = <A>(
     return argument
 }
 
+/**
+ * A combinator that takes a filter function `fn` and
+ * returns a task that fails if the input doesn't satisfy
+ * `fn`'s predicate.
+ *
+ * @example
+ * const task = filter((input: string) => input.length > 3)
+ *
+ * await task("foo") // => null
+ * await task("foobar") // => "foobar"
+ *
+ * @param fn A filter function that returns whether or not the input satisfies a predicate
+ * @returns A task that fails if the input doesn't satisfy the predicate
+ */
 export const filter = <T>(
     fn: Fn<T, boolean>
 ): EndoTask<T> => async input => {
