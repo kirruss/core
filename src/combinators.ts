@@ -12,8 +12,7 @@ import { fail } from "./utils"
  *
  * @param v A constant value
  */
-export const always = <T, U>(v: U): Task<T, U> => _ =>
-    Promise.resolve(v)
+export const always = <T, U>(v: U): Task<T, U> => _ => v
 
 /**
  * A combinator that takes a list of tasks and returns a
