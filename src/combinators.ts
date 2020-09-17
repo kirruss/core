@@ -102,14 +102,14 @@ export const catchErrors = <A, B, E>(
 }
 
 /**
- * A combinator that takes an effect that mutates the
- * current task's argument and returns the mutated argument.
+ * A combinator that takes an effect and calls it with the
+ * current task's argument and returns the argument.
  *
  * @example
  * type FooObject = { foo: number }
  *
  * const foo = { foo: 0 }
- * const task = effectful((input: FooObject) => {
+ * const task = discard((input: FooObject) => {
  *     input.foo++
  * })
  *
@@ -119,8 +119,8 @@ export const catchErrors = <A, B, E>(
  *
  * @param effect A function that has side effects
  */
-export const effectful = <A>(
-    effect: Fn<A, Promise<void | null> | void>
+export const discard = <A, B>(
+    effect: Task<A, B>
 ): EndoTask<A> => async argument => {
     await effect(argument)
 
