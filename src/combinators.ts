@@ -120,7 +120,7 @@ export const catchErrors = <A, B, E>(
  * @param effect A function that has side effects
  */
 export const effectful = <A>(
-    effect: Fn<A, Promise<void> | void>
+    effect: Fn<A, Promise<void | null> | void>
 ): EndoTask<A> => async argument => {
     await effect(argument)
 
