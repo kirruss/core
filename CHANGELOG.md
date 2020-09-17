@@ -1,3 +1,19 @@
+# [1.1.0](https://github.com/kirruss/core/compare/v1.0.0...v1.1.0) (2020-09-17)
+
+
+### Bug Fixes
+
+* added the option to provide non-promise inputs to reduce ([60773c6](https://github.com/kirruss/core/commit/60773c6eee37c9968e7bf1712e78ccb203544b0d))
+* declared types export as such ([f6ddc7d](https://github.com/kirruss/core/commit/f6ddc7d59ca9144e712c7368604af67c85534ccc))
+* fixed nullness check in discard combinators for void returning effects ([e3597ab](https://github.com/kirruss/core/commit/e3597ab19741154fffead9cba56a52ce7c84d630))
+
+
+### Features
+
+* added a bubblefailures option to the discard combinator ([6f6049e](https://github.com/kirruss/core/commit/6f6049e20ab95cb3bf1f2076d8aefe116400f4b5))
+* expanded effectul to allow taking async functions that return null ([259d072](https://github.com/kirruss/core/commit/259d072ec6615d9e4ff488d246b50331c89da21d))
+* expanded task definition to allow synchronous functions ([568c4d1](https://github.com/kirruss/core/commit/568c4d1d96b99036df212c10dd302d5fa78e814c))
+
 # 1.0.0 (2020-09-14)
 
 
