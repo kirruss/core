@@ -127,7 +127,7 @@ export const discard = <A, B>(
     bubbleFailures = true
 ): EndoTask<A> => async argument => {
     const result = await effect(argument)
-    if (!result && bubbleFailures) return null
+    if (result === null && bubbleFailures) return null
 
     return argument
 }
