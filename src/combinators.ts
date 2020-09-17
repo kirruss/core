@@ -202,13 +202,13 @@ export const pack = <A, B>(
  * await task // => "foo"
  *
  * @param fn A task
- * @param promise A promise
+ * @param input A promise
  */
 export const reduce = async <A, B>(
     fn: Task<A, B>,
-    promise: Promise<A | null>
+    input: Promise<A | null> | A | null
 ): Promise<B | null> => {
-    const result = await promise
+    const result = await input
     if (!result) return null
 
     return fn(result)
