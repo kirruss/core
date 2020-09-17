@@ -118,8 +118,8 @@ export const catchErrors = <A, B, E>(
  * foo // => { foo: 1 }
  *
  * @param effect A function that has side effects
- * @param bubbleFailures A boolean (defaults to true) that
- * determines whether the task should fail when the task
+ * @param bubbleFailures A value (defaults to true) that
+ * determines whether the task should fail when the effect
  * fails or just return the argument
  */
 export const discard = <A, B>(
