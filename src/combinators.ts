@@ -1,4 +1,4 @@
-import type { EndoTask, Fn, Task } from "./types"
+import type { Awaitable, EndoTask, Fn, Task } from "./types"
 import { fail } from "./utils"
 
 /**
@@ -206,7 +206,7 @@ export const pack = <A, B>(
  */
 export const reduce = async <A, B>(
     fn: Task<A, B>,
-    input: Promise<A | null> | A | null
+    input: Awaitable<A | null>
 ): Promise<B | null> => {
     const result = await input
     if (!result) return null
