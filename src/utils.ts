@@ -1,2 +1,2 @@
-export const fail = async () => null
-export const succeed = async <T>(v: T) => v
+export const fail = () => null
+export const succeed = <T>(v: T) => v

@@ -164,7 +164,7 @@ export const filter = <T>(
  *
  * @param _ A constant value
  */
-export const never = <T>(_: T): Promise<null> => fail()
+export const never = <T>(_: T): null => fail()
 
 /**
  * A combinator that takes a task that outputs another
