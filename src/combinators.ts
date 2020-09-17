@@ -11,7 +11,6 @@ import { fail } from "./utils"
  * await task("bar") // => "foo"
  *
  * @param v A constant value
- * @returns A task that always outputs `v`
  */
 export const always = <T, U>(v: U): Task<T, U> => _ =>
     Promise.resolve(v)
@@ -29,8 +28,6 @@ export const always = <T, U>(v: U): Task<T, U> => _ =>
  * await task("foo") // => "bar"
  *
  * @param tasks A list of tasks
- * @returns A task that returns the result of the first
- * successful task application
  */
 export const choose = <I, O>(
     ...tasks: Array<Task<I, O>>
@@ -62,7 +59,6 @@ export const choose = <I, O>(
  *
  * @param first First task to get run
  * @param second Second task to get run
- * @returns A task that represents the gluing together of the two tasks
  */
 export const compose = <A, B, C>(
     first: Task<A, B>,
@@ -93,7 +89,6 @@ export const compose = <A, B, C>(
  *
  * @param task A task
  * @param handler An error handler
- * @returns A task that defers to the handler on panic
  */
 export const catchErrors = <A, B, E>(
     task: Task<A, B>,
@@ -123,7 +118,6 @@ export const catchErrors = <A, B, E>(
  * foo // => { foo: 1 }
  *
  * @param effect A function that has side effects
- * @returns A task that returns the mutated result
  */
 export const effectful = <A>(
     effect: Fn<A, Promise<void> | void>
@@ -145,7 +139,6 @@ export const effectful = <A>(
  * await task("foobar") // => "foobar"
  *
  * @param fn A filter function that returns whether or not the input satisfies a predicate
- * @returns A task that fails if the input doesn't satisfy the predicate
  */
 export const filter = <T>(
     fn: Fn<T, boolean>
@@ -165,7 +158,6 @@ export const filter = <T>(
  * await task // => null
  *
  * @param _ A constant value
- * @returns A task that always fails
  */
 export const never = <T>(_: T): Promise<null> => fail()
 
@@ -184,7 +176,6 @@ export const never = <T>(_: T): Promise<null> => fail()
  * await task(false) // => null
  *
  * @param task A task that outputs another task
- * @returns A task that returns the result of applying the inner task
  */
 export const pack = <A, B>(
     task: Task<A, Task<A, B>>
@@ -207,7 +198,6 @@ export const pack = <A, B>(
  *
  * @param fn A task
  * @param promise A promise
- * @returns The result of applying the task on the promise
  */
 export const reduce = async <A, B>(
     fn: Task<A, B>,
@@ -240,7 +230,6 @@ export const tryThen: <A, B>(
  * await task("bar") // => "foo"
  *
  * @param task A task
- * @returns A task that either returns the result of calling the task with the argument or the initial argument
  */
 export const tryTo = <A>(
     task: EndoTask<A>
@@ -263,7 +252,6 @@ export const tryTo = <A>(
  * await task(false) // => null
  *
  * @param task A function that outputs a task
- * @returns A task that returns the result of applying the inner task
  */
 export const warbler = <A, B>(
     task: Fn<A, Task<A, B>>
