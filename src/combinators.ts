@@ -118,11 +118,16 @@ export const catchErrors = <A, B, E>(
  * foo // => { foo: 1 }
  *
  * @param effect A function that has side effects
+ * @param bubbleFailures A boolean (defaults to true) that
+ * determines whether the task should fail when the task
+ * fails or just return the argument
  */
 export const discard = <A, B>(
-    effect: Task<A, B>
+    effect: Task<A, B>,
+    bubbleFailures = true
 ): EndoTask<A> => async argument => {
-    await effect(argument)
+    const result = await effect(argument)
+    if (!result && bubbleFailures) return null
 
     return argument
 }
