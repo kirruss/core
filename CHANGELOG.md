@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/kirruss/core/compare/v1.1.0...v1.1.1) (2020-09-18)
+
+
+### Bug Fixes
+
+* reordered imports to prevent bundled definitions bug exporting everything as types ([1dce487](https://github.com/kirruss/core/commit/1dce4878849d5efb96776b0b3c3b6c58468a302e))
+
 # [1.1.0](https://github.com/kirruss/core/compare/v1.0.0...v1.1.0) (2020-09-17)
 
 
