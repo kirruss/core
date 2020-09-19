@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/kirruss/core/compare/v1.1.1...v1.1.2) (2020-09-19)
+
+
+### Bug Fixes
+
+* made the filter combinator take a task instead of a function ([f4d99ed](https://github.com/kirruss/core/commit/f4d99ed45761746ac25f931464171968119572db))
+
 ## [1.1.1](https://github.com/kirruss/core/compare/v1.1.0...v1.1.1) (2020-09-18)
 
 
