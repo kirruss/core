@@ -1,5 +1,9 @@
-export type Awaitable<T> = Promise<T> | T
 export type Fn<A, B> = (v: A) => B
+
+/**
+ * A value that can be awaited
+ */
+export type Awaitable<T> = Promise<T> | T
 
 /**
  * A generic asynchronous or synchronous function that has

@@ -1,2 +1,2 @@
 export * from "./combinators"
-export type { Task, EndoTask } from "./types"
+export type { Awaitable, Task, EndoTask } from "./types"
