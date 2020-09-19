@@ -132,9 +132,9 @@ export const discard = <A, B>(
 }
 
 /**
- * A combinator that takes a filter function `fn` and
+ * A combinator that takes a filter task and
  * returns a task that fails if the input doesn't satisfy
- * `fn`'s predicate.
+ * the filter tasks's predicate.
  *
  * @example
  * const task = filter((input: string) => input.length > 3)
@@ -142,12 +142,12 @@ export const discard = <A, B>(
  * await task("foo") // => null
  * await task("foobar") // => "foobar"
  *
- * @param fn A filter function that returns whether or not the input satisfies a predicate
+ * @param task A filter function that returns whether or not the input satisfies a predicate
  */
 export const filter = <T>(
-    fn: Fn<T, boolean>
+    task: Task<T, boolean>
 ): EndoTask<T> => async input => {
-    if (fn(input)) return input
+    if (await task(input)) return input
 
     return null
 }
