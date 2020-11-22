@@ -1,11 +1,11 @@
 import * as C from "."
 
 describe("combinators", () => {
-    describe("never<T>(_: T): Promise<null>", () => {
+    describe("never<T>(_: T): null", () => {
         it("always returns null", async () => {
             const task = C.never("foo")
 
-            expect(await task).toBeNull()
+            expect(task).toBeNull()
         })
     })
 })
