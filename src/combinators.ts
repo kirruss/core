@@ -8,6 +8,9 @@ import type {
     TaskArray
 } from "./types"
 
+/**
+ * A helper that fails unconditionally.
+ */
 export const fail = () => null
 export const succeed = <T>(v: T) => v
 
