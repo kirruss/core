@@ -161,7 +161,7 @@ export const filter = <T>(
  * @example
  * const task = never("foo")
  *
- * await task // => null
+ * task // => null
  *
  * @param _ A constant value
  */
