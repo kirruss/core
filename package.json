@@ -4,14 +4,7 @@
     "description": "The core module of the kirrus framework",
     "keywords": [
         "kirrus",
-        "framework",
-        "http",
-        "web",
-        "server",
-        "rest",
-        "restful",
-        "app",
-        "api"
+        "framework"
     ],
     "repository": "https://github.com/kirruss/core",
     "author": "BlueGhostGH <engisoftleaderoff@gmail.com>",
