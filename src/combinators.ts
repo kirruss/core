@@ -12,6 +12,12 @@ import type {
  * A helper that fails unconditionally.
  */
 export const fail = () => null
+/**
+ * A helper that takes a constant value `v` and
+ * unconditionally outputs `v`.
+ *
+ * @param v A constant value
+ */
 export const succeed = <T>(v: T) => v
 
 export const all = <T extends TaskArray>(
