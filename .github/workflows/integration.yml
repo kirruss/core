@@ -33,7 +33,7 @@ jobs:
             - name: Build project
               run: yarn ci:build
 
-    lint:
+    format:
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -57,8 +57,8 @@ jobs:
                       ${{ runner.os }}-yarn-
             - name: Install dependencies
               run: yarn --prefer-offline
-            - name: Check for linting and formatting of the project
-              run: yarn run ci:lint
+            - name: Check for formatting of the project
+              run: yarn run ci:format
 
     test:
         runs-on: ubuntu-latest
