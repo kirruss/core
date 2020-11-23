@@ -11,6 +11,18 @@ import type {
 export const fail = () => null
 export const succeed = <T>(v: T) => v
 
+export const all = <T extends TaskArray>(
+    ...tasks: readonly [...T]
+): Task<Inputs<T>, Outputs<T>> => async input => {
+    const results = await Promise.all(
+        tasks.map(task => task(input))
+    )
+
+    if (results.includes(null)) return null
+
+    return results as any
+}
+
 /**
  * A combinator that takes a constant value `v` and returns
  * a task that unconditionally outputs `v`.
