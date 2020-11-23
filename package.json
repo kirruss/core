@@ -28,14 +28,13 @@
     "scripts": {
         "build": "rollup -c ./rollup.config.ts",
         "dev": "tsnd --respawn --notify=false -T sandbox/index.ts",
-        "dev-check": "yarn lint-check && yarn format-check",
+        "dev-check": "yarn format-check",
         "dry-run": "npx --node-arg=\"--require dotenv/config\" semantic-release --dry-run",
         "format-check": "prettier --check \"**/*.+(js|json|ts)\"",
-        "lint-check": "eslint \"**/*.+(js|ts)\"",
         "test": "jest --config jest.config.json",
         "test-cov": "jest --config jest.cov.config.json",
         "ci:build": "rollup -c ./rollup.config.ts",
-        "ci:lint": "eslint \"**/*.+(js|ts)\" && prettier --check \"**/*.+(js|json|ts)\"",
+        "ci:format": "prettier --check \"**/*.+(js|json|ts)\"",
         "ci:test": "jest --config jest.ci.config.json",
         "ci:type-check": "tsc -p tsconfig.json --noEmit"
     },
