@@ -1,4 +1,26 @@
+export type And<T extends unknown[]> = {
+    0: unknown
+    1: T extends [infer head, ...infer tail]
+        ? head & And<tail>
+        : never
+}[T extends [] ? 0 : 1]
+
 export type Fn<A, B> = (v: A) => B
+
+export type Inputs<T extends TaskArray> = And<
+    {
+        [P in keyof T]: T[P] extends Task<infer I, any>
+            ? I
+            : undefined
+    }
+>
+export type Outputs<T extends TaskArray> = {
+    [P in keyof T]: T[P] extends Task<any, infer O>
+        ? O
+        : undefined
+}
+
+export type TaskArray = Array<Task<any, any>>
 
 /**
  * A value that can be awaited

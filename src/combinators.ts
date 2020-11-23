@@ -1,4 +1,12 @@
-import type { Awaitable, EndoTask, Fn, Task } from "./types"
+import type {
+    Awaitable,
+    EndoTask,
+    Fn,
+    Inputs,
+    Outputs,
+    Task,
+    TaskArray
+} from "./types"
 
 export const fail = () => null
 export const succeed = <T>(v: T) => v
@@ -191,6 +199,16 @@ export const pack = <A, B>(
     if (!result) return null
 
     return result(argument)
+}
+
+export const race = <T extends TaskArray>(
+    ...tasks: readonly [...T]
+): Task<Inputs<T>, Outputs<T>[number]> => async input => {
+    const result = await Promise.race(
+        tasks.map(task => task(input))
+    )
+
+    return result as any
 }
 
 /**
