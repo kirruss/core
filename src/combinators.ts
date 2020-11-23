@@ -1,7 +1,7 @@
 import type { Awaitable, EndoTask, Fn, Task } from "./types"
 
-const fail = () => null
-const succeed = <T>(v: T) => v
+export const fail = () => null
+export const succeed = <T>(v: T) => v
 
 /**
  * A combinator that takes a constant value `v` and returns
