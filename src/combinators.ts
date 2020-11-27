@@ -248,6 +248,32 @@ export const pack = <A, B>(
     return result(argument)
 }
 
+/**
+ * A combinator that is the equivalent of Promise#race. It
+ * takes a list of tasks and returns a task that applies an
+ * input to all tasks and returns the result of the first
+ * task to finish.
+ *
+ * @example
+ * const task1 = async (x: number) => {
+ *     await setTimeout(100)
+ *     return x
+ * }
+ * const task2 = async (x: number) => {
+ *     await setTimeout(500)
+ *     return x * 2
+ * }
+ * const task3 = async (x: number) => {
+ *     await setTimeout(300)
+ *     return x + 1
+ * }
+ *
+ * const task = race(task1, task2, task3)
+ *
+ * await task(3) // => 3 after 100ms
+ *
+ * @param tasks A list of tasks
+ */
 export const race = <T extends TaskArray>(
     ...tasks: readonly [...T]
 ): Task<Inputs<T>, Outputs<T>[number]> => async input => {
