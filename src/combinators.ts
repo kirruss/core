@@ -20,6 +20,32 @@ export const fail = () => null
  */
 export const succeed = <T>(v: T) => v
 
+/**
+ * A combinator that is the equivalent of Promise#all. It
+ * takes a list of tasks and returns a task that applies an
+ * input to all tasks and returns the result. It will fail
+ * if any of the tasks fail.
+ *
+ * @example
+ * const task1 = async (x: number) => {
+ *     await setTimeout(100)
+ *     return x
+ * }
+ * const task2 = async (x: number) => {
+ *     await setTimeout(500)
+ *     return x * 2
+ * }
+ * const task3 = async (x: number) => {
+ *     await setTimeout(300)
+ *     return x + 1
+ * }
+ *
+ * const task = all(task1, task2, task3)
+ *
+ * await task(3) // => [3, 6, 4] after 500ms
+ *
+ * @param tasks A list of tasks
+ */
 export const all = <T extends TaskArray>(
     ...tasks: readonly [...T]
 ): Task<Inputs<T>, Outputs<T>> => async input => {
