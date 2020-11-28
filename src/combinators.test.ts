@@ -35,6 +35,30 @@ describe("combinators", () => {
             expect(await composedTask(8762)).toBe(true)
         })
     })
+    describe("catchErrors<A, B, E>(task: Task<A, B>, handler: Task<E, B>): Task<A, B>", () => {
+        type ArrayOfFoo = {
+            foo: string
+        }[]
+
+        const arrayOne = [
+            { foo: "Foo" },
+            { foo: "Bar" },
+            { foo: "Foobar" }
+        ]
+        const arrayTwo = [{ foo: "Foo" }, { foo: "Bar" }]
+        const task = async (input: ArrayOfFoo) =>
+            input[2].foo
+        const handler = async (_: unknown) => "Panic!"
+
+        const catcher = C.catchErrors(task, handler)
+
+        it("returns the result of the task if it didn't fail", async () => {
+            expect(await catcher(arrayOne)).toBe("Foobar")
+        })
+        it("returns the result of the handler if the task failed", async () => {
+            expect(await catcher(arrayTwo)).toBe("Panic!")
+        })
+    })
     describe("never<T>(_: T): null", () => {
         it("returns null", () => {
             const task = C.never("foo")
