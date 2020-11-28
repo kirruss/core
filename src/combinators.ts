@@ -9,9 +9,9 @@ import type {
 } from "./types"
 
 /**
- * A helper that fails unconditionally.
+ * A helper that stops unconditionally.
  */
-export const fail = () => null
+export const stop = () => null
 /**
  * A helper that takes a constant value `v` and
  * unconditionally outputs `v`.
@@ -102,7 +102,7 @@ export const choose = <I, O>(
 
 /**
  * A combinator that effectively glues together two tasks,
- *  applying the first task on the input and then applying
+ * applying the first task on the input and then applying
  * the second task on the result.
  *
  * @example
@@ -220,7 +220,7 @@ export const filter = <T>(
  *
  * @param _ A constant value
  */
-export const never = <T>(_: T): null => fail()
+export const never = <T>(_: T): null => stop()
 
 /**
  * A combinator that takes a task that outputs another
