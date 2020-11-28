@@ -13,10 +13,7 @@ import type {
  */
 export const stop = () => null
 /**
- * A helper that takes a constant value `v` and
- * unconditionally outputs `v`.
- *
- * @param v A constant value
+ * A helper that is an alias for the identity function.
  */
 export const succeed = <T>(v: T) => v
 
