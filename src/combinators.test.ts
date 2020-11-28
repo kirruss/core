@@ -8,8 +8,8 @@ describe("combinators", () => {
             expect(await task("bar")).toBe("foo")
         })
     })
-    describe("choose<I, O>(Array<Task<I, O>>): Task<I, O>", () => {
-        it("returns never if there are no tasks", async () => {
+    describe("choose<I, O>(...tasks: Array<Task<I, O>>): Task<I, O>", () => {
+        it("returns null if there are no tasks", async () => {
             const fail = C.choose<string, string>()
 
             expect(await fail("foo")).toBeNull()
@@ -18,6 +18,21 @@ describe("combinators", () => {
             const task = C.choose(C.never, C.always("bar"))
 
             expect(await task("foo")).toBe("bar")
+        })
+    })
+    describe("compose<A, B, C>(first: Task<A, B>, second: Task<B, C>): Task<A, C>", () => {
+        it("returns the result of piping the input through both functions in order", async () => {
+            const firstTask = async (input: number) =>
+                String(input)
+            const secondTask = async (input: string) =>
+                input.length > 3
+            const composedTask = C.compose(
+                firstTask,
+                secondTask
+            )
+
+            expect(await composedTask(42)).toBe(false)
+            expect(await composedTask(8762)).toBe(true)
         })
     })
     describe("never<T>(_: T): null", () => {
