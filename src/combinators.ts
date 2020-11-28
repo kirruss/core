@@ -56,15 +56,13 @@ export const all = <T extends TaskArray>(
 }
 
 /**
- * A combinator that takes a constant value `v` and returns
- * a task that unconditionally outputs `v`.
+ * A combinator that takes a constant value and returns
+ * a task that unconditionally outputs the constant.
  *
  * @example
  * const task = always("foo")
  *
  * await task("bar") // => "foo"
- *
- * @param v A constant value
  */
 export const always = <T, U>(v: U): Task<T, U> => _ => v
 
