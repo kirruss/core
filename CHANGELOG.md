@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/kirruss/core/compare/v1.1.2...v1.2.0) (2020-12-01)
+
+
+### Features
+
+* added the combinator equivalent of promise#all ([3cb0626](https://github.com/kirruss/core/commit/3cb0626bfcb22c899abce9a889cf3486cf652c8e))
+* added the combinator equivalent of promise#race ([39fa782](https://github.com/kirruss/core/commit/39fa782ac3d63206a9b9851ebc3e1c97d9a2aa9b))
+* exposed the fail and succeed helpers ([98700ea](https://github.com/kirruss/core/commit/98700ea0a5a67cbf2811a97e231a8cc7067c547e))
+
 ## [1.1.2](https://github.com/kirruss/core/compare/v1.1.1...v1.1.2) (2020-09-19)
 
 
