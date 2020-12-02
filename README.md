@@ -12,6 +12,6 @@ Through the use of `combinators` in a type-safe manner, creating **tasks**, grou
 
 #### Documentation
 
-For more, see the [Documentation](docs/DOCS.md).
+For more, see the [Documentation](https://github.com/kirruss/core/blob/develop/docs/DOCS.md).
 
-See also the [Changelog](docs/Changelog.md).
+See also the [Changelog](https://github.com/kirruss/core/blob/develop/CHANGELOG.md).
