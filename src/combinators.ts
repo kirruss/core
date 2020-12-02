@@ -67,9 +67,9 @@ export const all = <T extends TaskArray>(
 export const always = <T, U>(v: U): Task<T, U> => _ => v
 
 /**
- * A combinator that takes a list of tasks and returns a
- * task that iterates over the list until a task is found
- * that doesn't fail with the provided input.
+ * A combinator that takes a list of tasks and returns the
+ * result of the first task to not stop when called with
+ * the provided input.
  *
  * @example
  * const fail = choose<string, string>()
@@ -77,8 +77,6 @@ export const always = <T, U>(v: U): Task<T, U> => _ => v
  *
  * await fail("foo") // => null
  * await task("foo") // => "bar"
- *
- * @param tasks A list of tasks
  */
 export const choose = <I, O>(
     ...tasks: Array<Task<I, O>>
